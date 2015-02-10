@@ -1,6 +1,9 @@
 var app = angular.module('myApp');
 
 app.controller('FriendController', function($scope) {
+    
+    $scope.searchTerm = '';
+    
     $scope.friends = [
     {
         "name": "Preston McNeil",
