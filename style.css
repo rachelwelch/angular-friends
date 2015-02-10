@@ -75,7 +75,8 @@ ul{
 .num-friends {
 	color: #3b5998;
 	font-size: 12px;
-	font-weight: bold
+	font-weight: bold;
+    clear: both;
 }
 .hashtag {
 	font-weight: bold
