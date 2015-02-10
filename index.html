@@ -13,23 +13,20 @@
 <div class="friends">
 
 
-<form class="form-inline searchForm" role="form" ng-model="searchTerm">
+<form class="form-inline searchForm" role="form">
   <div class="form-group">
-
-  <input class="form-control" placeholder="Search Anything About Your Friends" >
-  <!-- The stuff below is For step 5....get rid of the one above if you wish-->
-<!--    
-    <input class="form-control" placeholder="Search Your Friends' Name" >
-    <input class="form-control" placeholder="Search Your Freinds' Location" > 
- -->
-    <select class="input-medium">
-        <option>Name</option>
-        <option># friends</option>
-        <option>City</option>
-        <option>State</option>
-        <option>Country</option>
+    
+    <input class="form-control" placeholder="Search Your Friends' Name" ng-model="searchTerm.name">
+    <input class="form-control" placeholder="Search Your Freinds' Location" ng-model="searchTerm.current_location"> 
+ 
+    <select class="input-medium" ng-model='attributeSort'>
+        <option value='name'>Name</option>
+        <option value='friend_count'># friends</option>
+        <option value='friend.current_location.city'>City</option>
+        <option value='friend.current_location.state'>State</option>
+        <option value='friend.current_location.country'>Country</option>
     </select>
-    <select class="input-medium">
+    <select class="input-medium" ng-model='boolSort'>
         <option value="false">Descending</option>
         <option value="true">Ascending</option>
     </select>
@@ -37,7 +34,7 @@
 </form>
 
   <ul>
-    <li class='friend' ng-repeat='friend in friends'>
+    <li class='friend' ng-repeat='friend in friends | filter : searchTerm | orderBy: attributeSort : boolSort'>
        <img class="profile-pic" src={{friend.pic_square}}>
         <h3>{{friend.name}}</h3>
       <div class="location">
